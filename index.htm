@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Timer</title>
+    <script src="https://kit.fontawesome.com/70978f4643.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./assets/style.css" />
   </head>
   <body>
@@ -14,12 +15,25 @@
         <span id="minute">00</span><span>&nbsp;&#58;&nbsp;</span>
         <span id="seconds">00</span>
       </div>
-      <div class="button">
+      <div class="button" id="button">
         <button class="break" id="break">Break</button>
         <button class="start" id="start">Start</button>
       </div>
+      <div id="backButton">
+       <div>
+        <input type="number" min="0" id="timer_hour" value="0">
+        <input type="number" min="0" id="timer_minute" value="0">
+        <input type="number" min="0" id="timer_second" value="0">
+       </div>
+       <div>
+        <button class="okay" id="okay">Okay</button>
+       </div>
+      </div>
       <div class="result" id="result">
-        
+      </div>
+      <div class="operation">
+        <button class="forwardTimer" id="forward"><i class="fa-regular fa-clock fa-2xl" style="color: #c9c5c5;"></i></button>
+        <button class="forwardTimer" id="back"><i class="fa-solid fa-clock fa-2xl" style="color: #c9c5c5;"></i></button>
       </div>
     </div>
     <script src="./assets/main.js"></script>

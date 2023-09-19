@@ -62,7 +62,7 @@ button{
     color: #fff;
 }
 .result{
-    height: 200px;
+    height: 250px;
     padding-top: 20px;
     overflow: auto;
    
@@ -79,4 +79,33 @@ button{
     margin-top: 5px;
     padding: 5px;
     color: #fff;
+}
+.operation{
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+}
+.forwardTimer{
+    width: 50px;
+    height: 50px;
+    background-color: rgb(40, 36, 36);
+}
+.okay{
+    width: 150px;
+    border-radius: 25px;
+    margin-top: 10px;
+}
+#backButton{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    display: none;
+    height: 250px;
+}
+input{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    padding: 5px;
 }
