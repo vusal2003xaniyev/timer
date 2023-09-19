@@ -111,7 +111,7 @@ okay.onclick = function () {
         }
         if (secondTimer == 0) {
           minuteTimer--;
-          secondTimer = 59;
+          secondTimer = 60;
         }
         secondTimer--;
         secondTime.innerHTML = secondTimer;
