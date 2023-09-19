@@ -47,7 +47,7 @@ startButton.onclick = function () {
 
       console.log(start_stop);
     }
-  }, 10);
+  }, 1000);
   if (start_stop) {
     document.getElementById("start").innerHTML = "Stop";
     start_stop = false;
@@ -118,7 +118,7 @@ okay.onclick = function () {
         minuteTime.innerHTML = minuteTimer;
         hourTime.innerHTML = hourTimer;
       }
-    }, 10);
+    }, 1000);
   }
   document.getElementById("timer_hour").value = 0;
   document.getElementById("timer_minute").value = 0;
