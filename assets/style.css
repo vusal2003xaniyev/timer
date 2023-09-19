@@ -30,6 +30,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 span{
     font-size: 24px;
@@ -46,6 +47,7 @@ button{
     height: 50px;
     border-radius: 50%;
     border: none;
+    cursor: pointer;
 }
 .stop{
     color: #fff;
@@ -62,9 +64,9 @@ button{
     color: #fff;
 }
 .result{
-    height: 250px;
-    padding-top: 20px;
+    height: 230px;
     overflow: auto;
+    margin-top: 20px;
    
 }
 ::-webkit-scrollbar {

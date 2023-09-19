@@ -8,43 +8,45 @@ var back = document.querySelector("#back");
 var forward = document.querySelector("#forward");
 var forwardButton = document.querySelector("#button");
 var okay = document.querySelector("#okay");
-
+var resetButton = document.querySelector("#resetButton");
 var hour = 0;
 var minute = 0;
 var second = 0;
 var start_stop = true;
-var breakColor = false;
+var okey_button = false;
 var div = ``;
 startButton.onclick = function () {
   var timer = setInterval(() => {
-    second++;
-    if (second < 10) {
-      second = "0" + second;
+    if (start_stop == true) {
+      clearInterval(timer);
+    } else {
+      second++;
+      if (second < 10) {
+        second = "0" + second;
+        secondTime.innerHTML = second;
+      }
       secondTime.innerHTML = second;
-    }
-    secondTime.innerHTML = second;
-    if (second == 60) {
-      minute++;
-      second = 0;
-      if (minute < 10) {
-        minute = "0" + minute;
+      if (second == 60) {
+        minute++;
+        second = 0;
+        if (minute < 10) {
+          minute = "0" + minute;
+          minuteTime.innerHTML = minute;
+        }
         minuteTime.innerHTML = minute;
       }
-      minuteTime.innerHTML = minute;
-    }
-    if (minute == 60) {
-      minute = 0;
-      hour++;
-      if (hour < 10) {
-        hour = "0" + hour;
+      if (minute == 60) {
+        minute = 0;
+        hour++;
+        if (hour < 10) {
+          hour = "0" + hour;
+          hourTime.innerHTML = hour;
+        }
         hourTime.innerHTML = hour;
       }
-      hourTime.innerHTML = hour;
+
+      console.log(start_stop);
     }
-    if(start_stop==true){
-        clearInterval(timer);
-    }
-    console.log(start_stop);
   }, 10);
   if (start_stop) {
     document.getElementById("start").innerHTML = "Stop";
@@ -77,39 +79,61 @@ back.onclick = function () {
   forwardButton.style.display = "none";
   document.getElementById("backButton").style.display = "block";
   document.getElementById("result").style.display = "none";
+  resetTimer();
 };
 forward.onclick = function () {
   forwardButton.style.display = "flex";
   document.getElementById("backButton").style.display = "none";
   document.getElementById("result").style.display = "block";
+  resetTimer();
 };
 okay.onclick = function () {
+  okey_button = false;
   var hourTimer = document.getElementById("timer_hour").value;
   var minuteTimer = document.getElementById("timer_minute").value;
   var secondTimer = document.getElementById("timer_second").value;
-  console.log(`${hourTimer} : ${minuteTimer} : ${secondTimer}`);
-  if (hourTimer != 0 || minuteTimer != 0 || secondTimer != 0) {
-    var time=setInterval(function () {
-      if (secondTimer == 0) {
-        minuteTimer--;
-        secondTimer = 59;
-      }
-
-      secondTimer--;
-      secondTime.innerHTML = secondTimer;
-      if (hourTimer > 0) {
-        if (minuteTimer == 0 && secondTimer == 0) {
-          minuteTimer = 60;
-          hourTimer--;
-        }
-      }
-      minuteTime.innerHTML = minuteTimer;
-      hourTime.innerHTML = hourTimer;
-      if (hourTimer == 0 && minuteTimer == 0 && secondTimer == 0) {
+  if (hourTimer > 0 || minuteTimer > 0 || secondTimer > 0) {
+    var time = setInterval(function () {
+      if (
+        okey_button ||
+        (hourTimer == 0 && minuteTimer == 0 && secondTimer == 0)
+      ) {
         clearInterval(time);
-        alert("Zaman bitdi");
+        document.getElementById("seconds").innerHTML = "00";
+        hourTime.innerHTML = "00";
+        minuteTime.innerHTML = "00";
+      } else {
+        if (hourTimer > 0) {
+          if ((minuteTimer == 0 && secondTimer == 0) || minuteTimer == 0) {
+            minuteTimer = 60;
+            hourTimer--;
+          }
+        }
+        if (secondTimer == 0) {
+          minuteTimer--;
+          secondTimer = 59;
+        }
+        secondTimer--;
+        secondTime.innerHTML = secondTimer;
+        minuteTime.innerHTML = minuteTimer;
+        hourTime.innerHTML = hourTimer;
       }
     }, 10);
   }
- 
+  document.getElementById("timer_hour").value = 0;
+  document.getElementById("timer_minute").value = 0;
+  document.getElementById("timer_second").value = 0;
 };
+resetButton.onclick = resetTimer;
+function resetTimer() {
+  div = ``;
+  hour = 0;
+  minute = 0;
+  second = 0;
+  start_stop = true;
+  okey_button = true;
+  document.getElementById("result").innerHTML = "";
+  document.getElementById("seconds").innerHTML = "00";
+  hourTime.innerHTML = "00";
+  minuteTime.innerHTML = "00";
+}
